@@ -27,7 +27,7 @@ namespace EjecucionNav
             navegador1.ObtenerIdAplicacion("1000");
             navegador1.ObtenerIdUsuario(idUsuario);
             navegador1.AsignarAyuda("AyudaAsistencia");
-            navegador1.AsignarReporte("empleados");
+            navegador1.AsignarReporte("empleados"); /*Nuevo*/
             navegador1.AsignarNombreForm("Horas Extra");
         }
     }

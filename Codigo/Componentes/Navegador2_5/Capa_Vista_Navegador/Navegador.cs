@@ -13,6 +13,8 @@ using Capa_Vista_Reporteria;
 using Capa_Vista_Consulta;
 using Capa_Controlador_Seguridad;
 using System.IO;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Windows.Forms;
 
 namespace Capa_Vista_Navegador
 {
@@ -2469,84 +2471,107 @@ namespace Capa_Vista_Navegador
         // Maneja el evento de clic en el botón de imprimir.
         private void Btn_Imprimir_Click_1(object sender, EventArgs e)
         {
-            // Si el usuario configuró un nombre de reporte mediante AsignarReporte, buscamos el .rpt dinámicamente
-            if (!string.IsNullOrWhiteSpace(sIdReporte))
+			// Si el usuario configuró un nombre de reporte mediante AsignarReporte, buscamos el .rpt
+			// exactamente igual al flujo de Ayuda: desde la carpeta del ejecutable hacia arriba.
+			if (!string.IsNullOrWhiteSpace(sIdReporte))
+			{
+				try
+				{
+					// Caso 1: el usuario pasó una ruta absoluta válida
+					if (Path.IsPathRooted(sIdReporte) && File.Exists(sIdReporte))
+					{
+						MostrarReporteLocal(sIdReporte);
+						lg.funinsertarabitacora(sIdUsuario, "Vio un reporte", sTablaPrincipal, sIdAplicacion);
+						return;
+					}
+
+					// Caso 2: se pasó solo el nombre lógico
+					string nombreArchivo = Path.GetFileName(sIdReporte);
+					string nombreBuscado = Path.HasExtension(nombreArchivo) ? nombreArchivo : nombreArchivo + ".rpt";
+					string sExecutablePath = AppDomain.CurrentDomain.BaseDirectory;
+
+					// 1) Priorizar carpeta Reportes dentro de sau2k25, ascendiendo desde el ejecutable
+					string sSauRoot = sFindFolderUpwards(sExecutablePath, "sau2k25");
+					string sPathReporte = null;
+					if (!string.IsNullOrEmpty(sSauRoot))
+					{
+						string sReportesDir = Path.Combine(sSauRoot, "Reportes");
+						if (Directory.Exists(sReportesDir))
+						{
+							sPathReporte = sfunFindRptInDirectory(sReportesDir, nombreBuscado);
+						}
+					}
+
+					// 2) Si no se encontró en sau2k25\Reportes, buscar hacia arriba como en Ayuda
+					if (string.IsNullOrEmpty(sPathReporte))
+					{
+						sPathReporte = sFindRptUpwards(sExecutablePath, nombreBuscado);
+					}
+					if (!string.IsNullOrEmpty(sPathReporte))
+					{
+						MostrarReporteLocal(sPathReporte);
+						lg.funinsertarabitacora(sIdUsuario, "Vio un reporte", sTablaPrincipal, sIdAplicacion);
+						return;
+					}
+
+					MessageBox.Show("❌ ERROR: No se encontró el archivo de reporte '" + nombreBuscado + "' buscando desde la carpeta de la aplicación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("⚠️ Error al abrir el reporte: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+			}
+
+			// Flujo alterno: si no hay nombre lógico de reporte, consultar la ruta por Id de aplicación
+			Capa_Controlador_Reporteria.Controlador controladorAlt = new Capa_Controlador_Reporteria.Controlador();
+			ObtenerIdAplicacion(sIdAplicacion);
+			if (string.IsNullOrEmpty(sIdAplicacion))
+			{
+				MessageBox.Show("⚠️ ERROR: El ID de la aplicación está vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+			string sRutaAlt = controladorAlt.queryRuta(sIdAplicacion);
+			if (string.IsNullOrEmpty(sRutaAlt))
+			{
+				MessageBox.Show("⚠️ ERROR: No se pudo obtener la ruta del reporte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+			MostrarReporteLocal(sRutaAlt);
+			lg.funinsertarabitacora(sIdUsuario, "Vio un reporte", sTablaPrincipal, sIdAplicacion);
+        }
+
+        // Visor local de Crystal Reports para evitar dependencias externas
+        private void MostrarReporteLocal(string rutaRpt)
+        {
+            try
             {
-                try
+                if (string.IsNullOrWhiteSpace(rutaRpt) || !File.Exists(rutaRpt))
                 {
-                    string sExecutablePath = AppDomain.CurrentDomain.BaseDirectory;
-
-                    // Buscar primero la carpeta Reportes, ascendiendo desde la carpeta del ejecutable
-                    string sReportesDir = sFindFolderUpwards(sExecutablePath, "Reportes");
-                    // Si el usuario envió ruta absoluta, úsela directamente si existe
-                    if (Path.IsPathRooted(sIdReporte) && File.Exists(sIdReporte))
-                    {
-                        Capa_Vista_Reporteria.visualizar visualizarAbs = new Capa_Vista_Reporteria.visualizar(sIdReporte);
-                        visualizarAbs.ShowDialog();
-                        lg.funinsertarabitacora(sIdUsuario, "Vio un reporte", sTablaPrincipal, sIdAplicacion);
-                        return;
-                    }
-
-                    string nombreArchivo = Path.GetFileName(sIdReporte);
-                    string nombreBuscado = Path.HasExtension(nombreArchivo) ? nombreArchivo : nombreArchivo + ".rpt";
-
-                    string sRutaRpt = null;
-                    if (!string.IsNullOrEmpty(sReportesDir) && Directory.Exists(sReportesDir))
-                    {
-                        sRutaRpt = sfunFindRptInDirectory(sReportesDir, nombreBuscado);
-                    }
-                    if (string.IsNullOrEmpty(sRutaRpt))
-                    {
-                        // Si no está en Reportes, buscar hacia arriba desde el ejecutable en cada carpeta
-                        string current = sExecutablePath;
-                        while (!string.IsNullOrEmpty(current) && Directory.Exists(current))
-                        {
-                            sRutaRpt = sfunFindRptInDirectory(current, nombreBuscado);
-                            if (!string.IsNullOrEmpty(sRutaRpt)) break;
-                            var parent = Directory.GetParent(current);
-                            if (parent == null) break;
-                            current = parent.FullName;
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(sRutaRpt))
-                    {
-                        Capa_Vista_Reporteria.visualizar visualizar = new Capa_Vista_Reporteria.visualizar(sRutaRpt);
-                        visualizar.ShowDialog();
-                        lg.funinsertarabitacora(sIdUsuario, "Vio un reporte", sTablaPrincipal, sIdAplicacion);
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show("❌ ERROR: No se encontró el archivo del reporte '" + nombreBuscado + "' buscando desde la carpeta de la aplicación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("⚠️ Error al abrir el reporte: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("❌ ERROR: Ruta de reporte inválida o archivo inexistente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
+                ReportDocument reporte = new ReportDocument();
+                reporte.Load(rutaRpt);
+
+                Form frm = new Form();
+                frm.StartPosition = FormStartPosition.CenterScreen;
+                frm.WindowState = FormWindowState.Maximized;
+                frm.Text = "Reporte - " + Path.GetFileName(rutaRpt);
+
+                CrystalReportViewer viewer = new CrystalReportViewer();
+                viewer.Dock = DockStyle.Fill;
+                viewer.ToolPanelView = ToolPanelViewType.None;
+                viewer.ReportSource = reporte;
+
+                frm.Controls.Add(viewer);
+                frm.ShowDialog();
             }
-            else
+            catch (Exception ex)
             {
-                // Flujo anterior: obtener ruta desde el módulo de reportería por Id de aplicación
-                Capa_Controlador_Reporteria.Controlador controlador = new Capa_Controlador_Reporteria.Controlador();
-                ObtenerIdAplicacion(sIdAplicacion);
-                if (string.IsNullOrEmpty(sIdAplicacion))
-                {
-                    MessageBox.Show("⚠️ ERROR: El ID de la aplicación está vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                string sRuta = controlador.queryRuta(sIdAplicacion);
-                if (string.IsNullOrEmpty(sRuta))
-                {
-                    MessageBox.Show("⚠️ ERROR: No se pudo obtener la ruta del reporte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                Capa_Vista_Reporteria.visualizar visualizar = new Capa_Vista_Reporteria.visualizar(sRuta);
-                visualizar.ShowDialog();
-                lg.funinsertarabitacora(sIdUsuario, "Vio un reporte", sTablaPrincipal, sIdAplicacion);
+                MessageBox.Show("⚠️ Error al visualizar el reporte: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -2901,6 +2926,28 @@ namespace Capa_Vista_Navegador
                 while (dir != null)
                 {
                     string found = sfunFindFileInDirectory(dir.FullName, chmFileName);
+                    if (!string.IsNullOrEmpty(found))
+                    {
+                        return found;
+                    }
+                    dir = dir.Parent;
+                }
+            }
+            catch (Exception)
+            {
+            }
+            return null;
+        }
+
+        // Busca un archivo .rpt hacia arriba en el árbol, comenzando en startPath
+        private string sFindRptUpwards(string startPath, string rptFileName)
+        {
+            try
+            {
+                DirectoryInfo dir = new DirectoryInfo(startPath);
+                while (dir != null)
+                {
+                    string found = sfunFindRptInDirectory(dir.FullName, rptFileName);
                     if (!string.IsNullOrEmpty(found))
                     {
                         return found;
