@@ -12,9 +12,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-
-
-
 namespace Interfac_V3
 {
     public partial class FormModulos : Form
