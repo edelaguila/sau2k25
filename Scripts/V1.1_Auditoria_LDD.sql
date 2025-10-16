@@ -38,15 +38,6 @@ CREATE TABLE `tbl_actividades` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_actividades`
---
-
-LOCK TABLES `tbl_actividades` WRITE;
-/*!40000 ALTER TABLE `tbl_actividades` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_actividades` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_actividades_proyecto`
 --
 
@@ -66,13 +57,20 @@ CREATE TABLE `tbl_actividades_proyecto` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_actividades_proyecto`
+-- Table structure for table `tbl_aplicaciones`
 --
 
-LOCK TABLES `tbl_actividades_proyecto` WRITE;
-/*!40000 ALTER TABLE `tbl_actividades_proyecto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_actividades_proyecto` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `tbl_aplicaciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_aplicaciones` (
+  `Pk_id_aplicacion` int NOT NULL,
+  `nombre_aplicacion` varchar(50) NOT NULL,
+  `descripcion_aplicacion` varchar(150) NOT NULL,
+  `estado_aplicacion` tinyint DEFAULT '0',
+  PRIMARY KEY (`Pk_id_aplicacion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `tbl_areas`
@@ -92,15 +90,6 @@ CREATE TABLE `tbl_areas` (
   CONSTRAINT `tbl_areas_ibfk_1` FOREIGN KEY (`Fk_id_proyecto`) REFERENCES `tbl_proyecto` (`Pk_id_proyecto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_areas`
---
-
-LOCK TABLES `tbl_areas` WRITE;
-/*!40000 ALTER TABLE `tbl_areas` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_areas` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_asignacion`
@@ -125,13 +114,31 @@ CREATE TABLE `tbl_asignacion` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_asignacion`
+-- Table structure for table `tbl_asignacion_modulo_aplicacion`
 --
 
-LOCK TABLES `tbl_asignacion` WRITE;
-/*!40000 ALTER TABLE `tbl_asignacion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_asignacion` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `tbl_asignacion_modulo_aplicacion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_asignacion_modulo_aplicacion` (
+  `Fk_id_modulos` int NOT NULL,
+  `Fk_id_aplicacion` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tbl_asignaciones_perfils_usuario`
+--
+
+DROP TABLE IF EXISTS `tbl_asignaciones_perfils_usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_asignaciones_perfils_usuario` (
+  `PK_id_Perfil_Usuario` int NOT NULL,
+  `Fk_id_usuario` int NOT NULL,
+  `Fk_id_perfil` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `tbl_auditados`
@@ -153,15 +160,6 @@ CREATE TABLE `tbl_auditados` (
   CONSTRAINT `tbl_proyecto_ibfk_1` FOREIGN KEY (`Fk_id_proyecto`) REFERENCES `tbl_proyecto` (`Pk_id_proyecto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_auditados`
---
-
-LOCK TABLES `tbl_auditados` WRITE;
-/*!40000 ALTER TABLE `tbl_auditados` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_auditados` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_auditor`
@@ -188,13 +186,28 @@ CREATE TABLE `tbl_auditor` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_auditor`
+-- Table structure for table `tbl_bitacora`
 --
 
-LOCK TABLES `tbl_auditor` WRITE;
-/*!40000 ALTER TABLE `tbl_auditor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_auditor` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `tbl_bitacora`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_bitacora` (
+  `Pk_id_bitacora` int NOT NULL AUTO_INCREMENT,
+  `Fk_id_usuario` int NOT NULL,
+  `Fk_id_aplicacion` int NOT NULL,
+  `fecha_bitacora` date NOT NULL,
+  `hora_bitacora` time NOT NULL,
+  `host_bitacora` varchar(45) NOT NULL,
+  `ip_bitacora` varchar(100) NOT NULL,
+  `accion_bitacora` varchar(200) NOT NULL,
+  PRIMARY KEY (`Pk_id_bitacora`),
+  KEY `Fk_id_usuario` (`Fk_id_usuario`),
+  KEY `Fk_id_aplicacion` (`Fk_id_aplicacion`),
+  CONSTRAINT `tbl_bitacora_ibfk_1` FOREIGN KEY (`Fk_id_usuario`) REFERENCES `tbl_usuarios` (`Pk_id_usuario`),
+  CONSTRAINT `tbl_bitacora_ibfk_2` FOREIGN KEY (`Fk_id_aplicacion`) REFERENCES `tbl_aplicaciones` (`Pk_id_aplicacion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `tbl_checklist`
@@ -217,13 +230,20 @@ CREATE TABLE `tbl_checklist` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_checklist`
+-- Table structure for table `tbl_consultainteligente`
 --
 
-LOCK TABLES `tbl_checklist` WRITE;
-/*!40000 ALTER TABLE `tbl_checklist` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_checklist` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `tbl_consultainteligente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_consultainteligente` (
+  `Pk_consultaID` int NOT NULL,
+  `nombre_consulta` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `tipo_consulta` int NOT NULL,
+  `consulta_SQLE` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `consulta_estatus` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `tbl_criterios`
@@ -244,15 +264,6 @@ CREATE TABLE `tbl_criterios` (
   CONSTRAINT `tbl_criterios_ibfk_1` FOREIGN KEY (`Fk_id_rubrica`) REFERENCES `tbl_rubrica` (`Pk_id_rubrica`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_criterios`
---
-
-LOCK TABLES `tbl_criterios` WRITE;
-/*!40000 ALTER TABLE `tbl_criterios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_criterios` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_cronograma`
@@ -281,15 +292,6 @@ CREATE TABLE `tbl_cronograma` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_cronograma`
---
-
-LOCK TABLES `tbl_cronograma` WRITE;
-/*!40000 ALTER TABLE `tbl_cronograma` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_cronograma` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_descripcion_criterio`
 --
 
@@ -312,15 +314,6 @@ CREATE TABLE `tbl_descripcion_criterio` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_descripcion_criterio`
---
-
-LOCK TABLES `tbl_descripcion_criterio` WRITE;
-/*!40000 ALTER TABLE `tbl_descripcion_criterio` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_descripcion_criterio` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_escala_descripcion`
 --
 
@@ -339,15 +332,6 @@ CREATE TABLE `tbl_escala_descripcion` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_escala_descripcion`
---
-
-LOCK TABLES `tbl_escala_descripcion` WRITE;
-/*!40000 ALTER TABLE `tbl_escala_descripcion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_escala_descripcion` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_estado_asignacion`
 --
 
@@ -363,15 +347,6 @@ CREATE TABLE `tbl_estado_asignacion` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_estado_asignacion`
---
-
-LOCK TABLES `tbl_estado_asignacion` WRITE;
-/*!40000 ALTER TABLE `tbl_estado_asignacion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_estado_asignacion` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_estado_informe`
 --
 
@@ -385,15 +360,6 @@ CREATE TABLE `tbl_estado_informe` (
   PRIMARY KEY (`Pk_id_estado_informe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_estado_informe`
---
-
-LOCK TABLES `tbl_estado_informe` WRITE;
-/*!40000 ALTER TABLE `tbl_estado_informe` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_estado_informe` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_grafica`
@@ -413,15 +379,6 @@ CREATE TABLE `tbl_grafica` (
   CONSTRAINT `tbl_grafica_ibfk_1` FOREIGN KEY (`Fk_id_informe`) REFERENCES `tbl_informe` (`Pk_id_informe`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_grafica`
---
-
-LOCK TABLES `tbl_grafica` WRITE;
-/*!40000 ALTER TABLE `tbl_grafica` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_grafica` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_informe`
@@ -448,15 +405,6 @@ CREATE TABLE `tbl_informe` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_informe`
---
-
-LOCK TABLES `tbl_informe` WRITE;
-/*!40000 ALTER TABLE `tbl_informe` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_informe` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_modulos`
 --
 
@@ -464,25 +412,12 @@ DROP TABLE IF EXISTS `tbl_modulos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tbl_modulos` (
-  `Pk_id_modulo` int NOT NULL,
-  `Fk_id_proyecto` int NOT NULL,
-  `nombre_modulo` varchar(100) NOT NULL,
-  `descripcion` text,
-  `estado_modulo` varchar(100) NOT NULL,
-  PRIMARY KEY (`Pk_id_modulo`),
-  KEY `Fk_id_proyecto` (`Fk_id_proyecto`),
-  CONSTRAINT `tbl_modulos_ibfk_1` FOREIGN KEY (`Fk_id_proyecto`) REFERENCES `tbl_proyecto` (`Pk_id_proyecto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `Pk_id_modulos` int NOT NULL,
+  `nombre_modulo` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `descripcion_modulo` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
+  `estado_modulo` tinyint DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_modulos`
---
-
-LOCK TABLES `tbl_modulos` WRITE;
-/*!40000 ALTER TABLE `tbl_modulos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_modulos` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_perfil_auditor`
@@ -500,13 +435,57 @@ CREATE TABLE `tbl_perfil_auditor` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_perfil_auditor`
+-- Table structure for table `tbl_perfiles`
 --
 
-LOCK TABLES `tbl_perfil_auditor` WRITE;
-/*!40000 ALTER TABLE `tbl_perfil_auditor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_perfil_auditor` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `tbl_perfiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_perfiles` (
+  `Pk_id_perfil` int NOT NULL,
+  `nombre_perfil` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `descripcion_perfil` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
+  `estado_perfil` tinyint DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tbl_permisos_aplicacion_perfil`
+--
+
+DROP TABLE IF EXISTS `tbl_permisos_aplicacion_perfil`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_permisos_aplicacion_perfil` (
+  `PK_id_Aplicacion_Perfil` int NOT NULL,
+  `Fk_id_perfil` int NOT NULL,
+  `Fk_id_aplicacion` int NOT NULL,
+  `guardar_permiso` tinyint(1) DEFAULT '0',
+  `modificar_permiso` tinyint(1) DEFAULT '0',
+  `eliminar_permiso` tinyint(1) DEFAULT '0',
+  `buscar_permiso` tinyint(1) DEFAULT '0',
+  `imprimir_permiso` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tbl_permisos_aplicaciones_usuario`
+--
+
+DROP TABLE IF EXISTS `tbl_permisos_aplicaciones_usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_permisos_aplicaciones_usuario` (
+  `PK_id_Aplicacion_Usuario` int NOT NULL,
+  `Fk_id_usuario` int NOT NULL,
+  `Fk_id_aplicacion` int NOT NULL,
+  `guardar_permiso` tinyint(1) DEFAULT '0',
+  `buscar_permiso` tinyint(1) DEFAULT '0',
+  `modificar_permiso` tinyint(1) DEFAULT '0',
+  `eliminar_permiso` tinyint(1) DEFAULT '0',
+  `imprimir_permiso` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `tbl_planificacion`
@@ -530,15 +509,6 @@ CREATE TABLE `tbl_planificacion` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_planificacion`
---
-
-LOCK TABLES `tbl_planificacion` WRITE;
-/*!40000 ALTER TABLE `tbl_planificacion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_planificacion` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_proyecto`
 --
 
@@ -560,15 +530,6 @@ CREATE TABLE `tbl_proyecto` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_proyecto`
---
-
-LOCK TABLES `tbl_proyecto` WRITE;
-/*!40000 ALTER TABLE `tbl_proyecto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_proyecto` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_proyecto_estado`
 --
 
@@ -582,15 +543,6 @@ CREATE TABLE `tbl_proyecto_estado` (
   PRIMARY KEY (`Pk_id_proyecto_estado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_proyecto_estado`
---
-
-LOCK TABLES `tbl_proyecto_estado` WRITE;
-/*!40000 ALTER TABLE `tbl_proyecto_estado` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_proyecto_estado` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_recursos`
@@ -611,15 +563,6 @@ CREATE TABLE `tbl_recursos` (
   CONSTRAINT `tbl_recursos_ibfk_1` FOREIGN KEY (`Fk_id_proyecto`) REFERENCES `tbl_proyecto` (`Pk_id_proyecto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_recursos`
---
-
-LOCK TABLES `tbl_recursos` WRITE;
-/*!40000 ALTER TABLE `tbl_recursos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_recursos` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_reporte`
@@ -647,15 +590,6 @@ CREATE TABLE `tbl_reporte` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_reporte`
---
-
-LOCK TABLES `tbl_reporte` WRITE;
-/*!40000 ALTER TABLE `tbl_reporte` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_reporte` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tbl_rubrica`
 --
 
@@ -673,15 +607,6 @@ CREATE TABLE `tbl_rubrica` (
   CONSTRAINT `tbl_rubrica_ibfk_1` FOREIGN KEY (`Fk_id_cronograma`) REFERENCES `tbl_cronograma` (`Pk_id_cronograma`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tbl_rubrica`
---
-
-LOCK TABLES `tbl_rubrica` WRITE;
-/*!40000 ALTER TABLE `tbl_rubrica` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_rubrica` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tbl_tabla_ponderacion`
@@ -716,13 +641,172 @@ CREATE TABLE `tbl_tabla_ponderacion` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_tabla_ponderacion`
+-- Table structure for table `tbl_usuarios`
 --
 
-LOCK TABLES `tbl_tabla_ponderacion` WRITE;
-/*!40000 ALTER TABLE `tbl_tabla_ponderacion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_tabla_ponderacion` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `tbl_usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_usuarios` (
+  `Pk_id_usuario` int NOT NULL AUTO_INCREMENT,
+  `nombre_usuario` varchar(50) NOT NULL,
+  `apellido_usuario` varchar(50) NOT NULL,
+  `username_usuario` varchar(20) NOT NULL,
+  `password_usuario` varchar(100) NOT NULL,
+  `email_usuario` varchar(50) NOT NULL,
+  `ultima_conexion_usuario` datetime DEFAULT NULL,
+  `estado_usuario` tinyint NOT NULL DEFAULT '0',
+  `pregunta` varchar(50) NOT NULL,
+  `respuesta` varchar(50) NOT NULL,
+  PRIMARY KEY (`Pk_id_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping routines for database 'auditoria'
+--
+/*!50003 DROP PROCEDURE IF EXISTS `cambiarContraModulo` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiarContraModulo`(IN `p_usuario` INT, IN `p_nueva_contrasenia` VARCHAR(100))
+BEGIN
+    -- Actualizar la contraseña del usuario
+    UPDATE tbl_usuarios
+    SET password_usuario = p_nueva_contrasenia
+    WHERE pk_id_usuario = p_usuario;
+
+    -- Confirmar que el cambio se realizó
+    IF ROW_COUNT() > 0 THEN
+        SELECT 'Contraseña actualizada con éxito' AS resultado;
+    ELSE
+        SELECT 'Usuario no encontrado' AS resultado;
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `cambiarContrasenia` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiarContrasenia`(IN `usuario` VARCHAR(255), IN `nuevaContrasenia` VARCHAR(255), IN `respuestaSeguridad` VARCHAR(255))
+BEGIN
+    DECLARE respuestaGuardada VARCHAR(255);
+    DECLARE usuarioExiste INT;
+
+    -- Verificar si el usuario existe
+    SELECT COUNT(*) INTO usuarioExiste 
+    FROM tbl_usuarios 
+    WHERE username_usuario = usuario;
+
+    IF usuarioExiste = 0 THEN
+        -- Si el usuario no existe, devolver mensaje de error
+        SELECT 'Usuario no encontrado' AS resultado;
+    ELSE
+        -- Obtener la respuesta de seguridad desde la base de datos
+        SELECT respuesta INTO respuestaGuardada 
+        FROM tbl_usuarios 
+        WHERE username_usuario = usuario;
+
+        -- Verificar si la respuesta ingresada coincide con la guardada
+        IF LOWER(respuestaGuardada) = LOWER(respuestaSeguridad) THEN
+            -- Actualizar la contraseña
+            UPDATE tbl_usuarios
+            SET password_usuario = nuevaContrasenia
+            WHERE username_usuario = usuario;
+            
+            -- Devolver el resultado exitoso
+            SELECT 'Contraseña actualizada con éxito' AS resultado;
+        ELSE
+            -- Devolver resultado si la respuesta de seguridad es incorrecta
+            SELECT 'Respuesta de seguridad incorrecta' AS resultado;
+        END IF;
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `cambioContrasenia` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cambioContrasenia`(IN `p_usuario` VARCHAR(20))
+BEGIN
+    DECLARE usuario_existe INT;
+
+    SELECT COUNT(*) INTO usuario_existe
+    FROM tbl_usuarios
+    WHERE username_usuario = p_usuario;
+
+    -- Si el usuario existe, actualiza el tiempo de última conexión
+    IF usuario_existe > 0 THEN        
+        SELECT 'Usuario encontrado' AS resu;
+    ELSE
+        SELECT 'Usuario no encontrado' AS resu;
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `procedimientoLogin` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `procedimientoLogin`(IN `p_usuario` VARCHAR(20), IN `p_clave` VARCHAR(100))
+BEGIN
+    DECLARE usuario_existe INT;
+
+    SELECT COUNT(*) INTO usuario_existe
+    FROM tbl_usuarios
+    WHERE username_usuario = p_usuario AND password_usuario = p_clave AND estado_usuario = 1;
+
+    -- Si el usuario existe, actualiza el tiempo de última conexión
+    IF usuario_existe > 0 THEN
+        UPDATE tbl_usuarios
+        SET ultima_conexion_usuario = NOW()
+        WHERE username_usuario = p_usuario AND password_usuario = p_clave;
+        
+        SELECT 'Inicio de sesión exitoso' AS resultado;
+    ELSE
+        SELECT 'Inicio de sesión fallido' AS resultado;
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -733,4 +817,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-14 10:20:26
+-- Dump completed on 2025-10-16  9:49:29
