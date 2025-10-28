@@ -15,14 +15,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Dumping data for table `tbl_actividades`
---
-
-LOCK TABLES `tbl_actividades` WRITE;
-/*!40000 ALTER TABLE `tbl_actividades` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbl_actividades` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Dumping data for table `tbl_actividades_proyecto`

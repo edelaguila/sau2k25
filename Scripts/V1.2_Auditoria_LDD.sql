@@ -16,28 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tbl_actividades`
---
-
-DROP TABLE IF EXISTS `tbl_actividades`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_actividades` (
-  `Pk_id_actividad` int NOT NULL,
-  `Fk_id_asignacion` int NOT NULL,
-  `nombre_actividad` varchar(100) NOT NULL,
-  `descripcion` text,
-  `fecha_inicio` date DEFAULT NULL,
-  `fecha_fin` date DEFAULT NULL,
-  `observaciones` text,
-  `evidencia` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`Pk_id_actividad`),
-  KEY `Fk_id_asignacion` (`Fk_id_asignacion`),
-  CONSTRAINT `tbl_asignacion_ibfk_1` FOREIGN KEY (`Fk_id_asignacion`) REFERENCES `tbl_asignacion` (`Pk_id_asignacion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `tbl_actividades_proyecto`
 --
 
@@ -102,14 +80,20 @@ CREATE TABLE `tbl_asignacion` (
   `Pk_id_asignacion` int NOT NULL,
   `Fk_id_auditor` int NOT NULL,
   `Fk_id_estado_asignacion` int NOT NULL,
+  `Fk_id_actividad_proyecto` int NOT NULL,
+  `nombre_asignacion` varchar(100) NOT NULL,
   `fecha_asignacion` date NOT NULL,
   `fecha_finalizacion` date DEFAULT NULL,
+  `descripcion` text,
+  `evidencia` varchar(255) DEFAULT NULL,
   `observaciones` text,
   PRIMARY KEY (`Pk_id_asignacion`),
   KEY `Fk_id_auditor` (`Fk_id_auditor`),
   KEY `Fk_id_estado_asignacion` (`Fk_id_estado_asignacion`),
-  CONSTRAINT `tbl_auditor_ibfk_1` FOREIGN KEY (`Fk_id_auditor`) REFERENCES `tbl_auditor` (`Pk_id_auditor`),
-  CONSTRAINT `tbl_estado_asignacion_ibfk_2` FOREIGN KEY (`Fk_id_estado_asignacion`) REFERENCES `tbl_estado_asignacion` (`Pk_id_estado_asignacion`)
+  KEY `Fk_id_actividad_proyecto` (`Fk_id_actividad_proyecto`),
+  CONSTRAINT `tbl_asignacion_ibfk_1` FOREIGN KEY (`Fk_id_auditor`) REFERENCES `tbl_auditor` (`Pk_id_auditor`),
+  CONSTRAINT `tbl_asignacion_ibfk_2` FOREIGN KEY (`Fk_id_estado_asignacion`) REFERENCES `tbl_estado_asignacion` (`Pk_id_estado_asignacion`),
+  CONSTRAINT `tbl_asignacion_ibfk_3` FOREIGN KEY (`Fk_id_actividad_proyecto`) REFERENCES `tbl_actividades_proyecto` (`Pk_id_actividad_proyecto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -122,8 +106,12 @@ DROP TABLE IF EXISTS `tbl_asignacion_modulo_aplicacion`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tbl_asignacion_modulo_aplicacion` (
   `Fk_id_modulos` int NOT NULL,
-  `Fk_id_aplicacion` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `Fk_id_aplicacion` int NOT NULL,
+  KEY `Fk_id_modulos` (`Fk_id_modulos`),
+  KEY `Fk_id_aplicacion` (`Fk_id_aplicacion`),
+  CONSTRAINT `tbl_asignacion_modulo_aplicacion_ibfk_1` FOREIGN KEY (`Fk_id_modulos`) REFERENCES `tbl_modulos` (`Pk_id_modulos`),
+  CONSTRAINT `tbl_asignacion_modulo_aplicacion_ibfk_2` FOREIGN KEY (`Fk_id_aplicacion`) REFERENCES `tbl_aplicaciones` (`Pk_id_aplicacion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -136,8 +124,13 @@ DROP TABLE IF EXISTS `tbl_asignaciones_perfils_usuario`;
 CREATE TABLE `tbl_asignaciones_perfils_usuario` (
   `PK_id_Perfil_Usuario` int NOT NULL,
   `Fk_id_usuario` int NOT NULL,
-  `Fk_id_perfil` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `Fk_id_perfil` int NOT NULL,
+  PRIMARY KEY (`PK_id_Perfil_Usuario`),
+  KEY `Fk_id_usuario` (`Fk_id_usuario`),
+  KEY `Fk_id_perfil` (`Fk_id_perfil`),
+  CONSTRAINT `tbl_asignaciones_perfils_usuario_ibfk_1` FOREIGN KEY (`Fk_id_usuario`) REFERENCES `tbl_usuarios` (`Pk_id_usuario`),
+  CONSTRAINT `tbl_asignaciones_perfils_usuario_ibfk_2` FOREIGN KEY (`Fk_id_perfil`) REFERENCES `tbl_perfiles` (`Pk_id_perfil`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,7 +199,7 @@ CREATE TABLE `tbl_bitacora` (
   KEY `Fk_id_aplicacion` (`Fk_id_aplicacion`),
   CONSTRAINT `tbl_bitacora_ibfk_1` FOREIGN KEY (`Fk_id_usuario`) REFERENCES `tbl_usuarios` (`Pk_id_usuario`),
   CONSTRAINT `tbl_bitacora_ibfk_2` FOREIGN KEY (`Fk_id_aplicacion`) REFERENCES `tbl_aplicaciones` (`Pk_id_aplicacion`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -220,7 +213,6 @@ CREATE TABLE `tbl_checklist` (
   `Pk_id_checklist` int NOT NULL,
   `Fk_id_informe` int NOT NULL,
   `Fk_id_criterio` int NOT NULL,
-  `entregado` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`Pk_id_checklist`),
   KEY `Fk_id_informe` (`Fk_id_informe`),
   KEY `Fk_id_criterio` (`Fk_id_criterio`),
@@ -238,11 +230,12 @@ DROP TABLE IF EXISTS `tbl_consultainteligente`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tbl_consultainteligente` (
   `Pk_consultaID` int NOT NULL,
-  `nombre_consulta` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `nombre_consulta` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `tipo_consulta` int NOT NULL,
-  `consulta_SQLE` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `consulta_estatus` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `consulta_SQLE` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `consulta_estatus` int NOT NULL,
+  PRIMARY KEY (`Pk_consultaID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -413,9 +406,10 @@ DROP TABLE IF EXISTS `tbl_modulos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tbl_modulos` (
   `Pk_id_modulos` int NOT NULL,
-  `nombre_modulo` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `descripcion_modulo` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
-  `estado_modulo` tinyint DEFAULT '0'
+  `nombre_modulo` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `descripcion_modulo` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `estado_modulo` tinyint DEFAULT '0',
+  PRIMARY KEY (`Pk_id_modulos`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -443,9 +437,10 @@ DROP TABLE IF EXISTS `tbl_perfiles`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tbl_perfiles` (
   `Pk_id_perfil` int NOT NULL,
-  `nombre_perfil` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `descripcion_perfil` varchar(150) COLLATE utf8mb4_general_ci NOT NULL,
-  `estado_perfil` tinyint DEFAULT '0'
+  `nombre_perfil` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `descripcion_perfil` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `estado_perfil` tinyint DEFAULT '0',
+  PRIMARY KEY (`Pk_id_perfil`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -464,8 +459,13 @@ CREATE TABLE `tbl_permisos_aplicacion_perfil` (
   `modificar_permiso` tinyint(1) DEFAULT '0',
   `eliminar_permiso` tinyint(1) DEFAULT '0',
   `buscar_permiso` tinyint(1) DEFAULT '0',
-  `imprimir_permiso` tinyint(1) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `imprimir_permiso` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`PK_id_Aplicacion_Perfil`),
+  KEY `Fk_id_perfil` (`Fk_id_perfil`),
+  KEY `Fk_id_aplicacion` (`Fk_id_aplicacion`),
+  CONSTRAINT `tbl_permisos_aplicacion_perfil_ibfk_1` FOREIGN KEY (`Fk_id_perfil`) REFERENCES `tbl_perfiles` (`Pk_id_perfil`),
+  CONSTRAINT `tbl_permisos_aplicacion_perfil_ibfk_2` FOREIGN KEY (`Fk_id_aplicacion`) REFERENCES `tbl_aplicaciones` (`Pk_id_aplicacion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -483,8 +483,13 @@ CREATE TABLE `tbl_permisos_aplicaciones_usuario` (
   `buscar_permiso` tinyint(1) DEFAULT '0',
   `modificar_permiso` tinyint(1) DEFAULT '0',
   `eliminar_permiso` tinyint(1) DEFAULT '0',
-  `imprimir_permiso` tinyint(1) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `imprimir_permiso` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`PK_id_Aplicacion_Usuario`),
+  KEY `Fk_id_usuario` (`Fk_id_usuario`),
+  KEY `Fk_id_aplicacion` (`Fk_id_aplicacion`),
+  CONSTRAINT `tbl_permisos_aplicaciones_usuario_ibfk_1` FOREIGN KEY (`Fk_id_usuario`) REFERENCES `tbl_usuarios` (`Pk_id_usuario`),
+  CONSTRAINT `tbl_permisos_aplicaciones_usuario_ibfk_2` FOREIGN KEY (`Fk_id_aplicacion`) REFERENCES `tbl_aplicaciones` (`Pk_id_aplicacion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -526,6 +531,28 @@ CREATE TABLE `tbl_proyecto` (
   PRIMARY KEY (`Pk_id_proyecto`),
   KEY `Fk_id_proyecto_estado` (`Fk_id_proyecto_estado`),
   CONSTRAINT `tbl_proyecto_estado_ibfk_1` FOREIGN KEY (`Fk_id_proyecto_estado`) REFERENCES `tbl_proyecto_estado` (`Pk_id_proyecto_estado`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `tbl_proyecto_auditado`
+--
+
+DROP TABLE IF EXISTS `tbl_proyecto_auditado`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_proyecto_auditado` (
+  `Pk_id_auditor_proyecto` int NOT NULL,
+  `Fk_id_auditor` int NOT NULL,
+  `Fk_id_proyecto` int NOT NULL,
+  `rol_en_proyecto` varchar(50) DEFAULT NULL,
+  `fecha_asignacion` date DEFAULT (curdate()),
+  `observaciones` text,
+  PRIMARY KEY (`Pk_id_auditor_proyecto`),
+  KEY `Fk_id_auditor` (`Fk_id_auditor`),
+  KEY `Fk_id_proyecto` (`Fk_id_proyecto`),
+  CONSTRAINT `fk_auditor_proyecto_auditor` FOREIGN KEY (`Fk_id_auditor`) REFERENCES `tbl_auditor` (`Pk_id_auditor`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_auditor_proyecto_proyecto` FOREIGN KEY (`Fk_id_proyecto`) REFERENCES `tbl_proyecto` (`Pk_id_proyecto`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -659,7 +686,7 @@ CREATE TABLE `tbl_usuarios` (
   `pregunta` varchar(50) NOT NULL,
   `respuesta` varchar(50) NOT NULL,
   PRIMARY KEY (`Pk_id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -675,14 +702,15 @@ CREATE TABLE `tbl_usuarios` (
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiarContraModulo`(IN `p_usuario` INT, IN `p_nueva_contrasenia` VARCHAR(100))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiarContraModulo`(
+    IN `p_usuario` INT,
+    IN `p_nueva_contrasenia` VARCHAR(100)
+)
 BEGIN
-    -- Actualizar la contraseña del usuario
     UPDATE tbl_usuarios
     SET password_usuario = p_nueva_contrasenia
     WHERE pk_id_usuario = p_usuario;
 
-    -- Confirmar que el cambio se realizó
     IF ROW_COUNT() > 0 THEN
         SELECT 'Contraseña actualizada con éxito' AS resultado;
     ELSE
@@ -704,36 +732,33 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiarContrasenia`(IN `usuario` VARCHAR(255), IN `nuevaContrasenia` VARCHAR(255), IN `respuestaSeguridad` VARCHAR(255))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiarContrasenia`(
+    IN `usuario` VARCHAR(255),
+    IN `nuevaContrasenia` VARCHAR(255),
+    IN `respuestaSeguridad` VARCHAR(255)
+)
 BEGIN
     DECLARE respuestaGuardada VARCHAR(255);
     DECLARE usuarioExiste INT;
 
-    -- Verificar si el usuario existe
     SELECT COUNT(*) INTO usuarioExiste 
     FROM tbl_usuarios 
     WHERE username_usuario = usuario;
 
     IF usuarioExiste = 0 THEN
-        -- Si el usuario no existe, devolver mensaje de error
         SELECT 'Usuario no encontrado' AS resultado;
     ELSE
-        -- Obtener la respuesta de seguridad desde la base de datos
         SELECT respuesta INTO respuestaGuardada 
         FROM tbl_usuarios 
         WHERE username_usuario = usuario;
 
-        -- Verificar si la respuesta ingresada coincide con la guardada
         IF LOWER(respuestaGuardada) = LOWER(respuestaSeguridad) THEN
-            -- Actualizar la contraseña
             UPDATE tbl_usuarios
             SET password_usuario = nuevaContrasenia
             WHERE username_usuario = usuario;
             
-            -- Devolver el resultado exitoso
             SELECT 'Contraseña actualizada con éxito' AS resultado;
         ELSE
-            -- Devolver resultado si la respuesta de seguridad es incorrecta
             SELECT 'Respuesta de seguridad incorrecta' AS resultado;
         END IF;
     END IF;
@@ -753,7 +778,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `cambioContrasenia`(IN `p_usuario` VARCHAR(20))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cambioContrasenia`(
+    IN `p_usuario` VARCHAR(20)
+)
 BEGIN
     DECLARE usuario_existe INT;
 
@@ -761,7 +788,6 @@ BEGIN
     FROM tbl_usuarios
     WHERE username_usuario = p_usuario;
 
-    -- Si el usuario existe, actualiza el tiempo de última conexión
     IF usuario_existe > 0 THEN        
         SELECT 'Usuario encontrado' AS resu;
     ELSE
@@ -783,19 +809,24 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `procedimientoLogin`(IN `p_usuario` VARCHAR(20), IN `p_clave` VARCHAR(100))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `procedimientoLogin`(
+    IN `p_usuario` VARCHAR(20),
+    IN `p_clave` VARCHAR(100)
+)
 BEGIN
     DECLARE usuario_existe INT;
 
     SELECT COUNT(*) INTO usuario_existe
     FROM tbl_usuarios
-    WHERE username_usuario = p_usuario AND password_usuario = p_clave AND estado_usuario = 1;
+    WHERE username_usuario = p_usuario
+      AND password_usuario = p_clave
+      AND estado_usuario = 1;
 
-    -- Si el usuario existe, actualiza el tiempo de última conexión
     IF usuario_existe > 0 THEN
         UPDATE tbl_usuarios
         SET ultima_conexion_usuario = NOW()
-        WHERE username_usuario = p_usuario AND password_usuario = p_clave;
+        WHERE username_usuario = p_usuario
+          AND password_usuario = p_clave;
         
         SELECT 'Inicio de sesión exitoso' AS resultado;
     ELSE
@@ -817,4 +848,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-16  9:49:29
+-- Dump completed on 2025-10-27 17:57:16
