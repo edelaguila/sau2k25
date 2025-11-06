@@ -164,4 +164,15 @@ ALTER TABLE tbl_rubrica ADD COLUMN estado TINYINT(1) DEFAULT 1;
 ALTER TABLE tbl_tabla_ponderacion ADD COLUMN estado TINYINT(1) DEFAULT 1;
 ALTER TABLE tbl_auditor MODIFY email_auditor varchar(100) DEFAULT NULL;
 
+-- For MySQL
+ALTER TABLE tbl_tabla_ponderacion
+MODIFY COLUMN fecha_evaluacion DATETIME;
+
+-- For SQL Server
+ALTER TABLE tbl_tabla_ponderacion 
+MODIFY COLUMN fecha_evaluacion DATETIME;
+
+ALTER TABLE tbl_recursos
+MODIFY COLUMN fecha_registro DATETIME NULL;
+
 select* from tbl_auditor;

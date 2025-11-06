@@ -1,6 +1,6 @@
-﻿namespace Auditor
+﻿namespace Capa_Vista_Auditor
 {
-    partial class Frm_Auditor
+    partial class Frm_Mant_Auditor
     {
         /// <summary>
         /// Required designer variable.
@@ -40,16 +40,15 @@
             this.navegador1.Name = "navegador1";
             this.navegador1.Size = new System.Drawing.Size(800, 450);
             this.navegador1.TabIndex = 0;
-            this.navegador1.Load += new System.EventHandler(this.navegador1_Load);
             // 
-            // Frm_Auditor
+            // Frm_Mant_Auditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.navegador1);
-            this.Name = "Frm_Auditor";
-            this.Text = "Frm_Auditor";
+            this.Name = "Frm_Mant_Auditor";
+            this.Text = "Frm_Mant_Auditor";
             this.ResumeLayout(false);
 
         }

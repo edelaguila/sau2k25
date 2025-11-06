@@ -14,7 +14,7 @@ namespace Capa_Vista_Tabla_Ponderacion
     {
 
         String idUsuario;
-        public Frm_Mantenimiento_Tabla_Ponderacion()
+        public Frm_Mantenimiento_Tabla_Ponderacion(string idUsuario)
         {
             InitializeComponent();
 

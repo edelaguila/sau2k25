@@ -14,7 +14,7 @@ namespace Capa_Vista
         {
             string idUsuario;
 
-            public Mantenimiento_Actividades()
+            public Mantenimiento_Actividades(string idUsuario)
             {
                 InitializeComponent();
 
