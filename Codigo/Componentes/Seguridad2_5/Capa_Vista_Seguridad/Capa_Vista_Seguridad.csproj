@@ -31,9 +31,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Capa Vista">
+      <HintPath>..\..\..\Modulos\MVC_Mantenimiento_Actividaes\Capa Vista\bin\Debug\Capa Vista.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista">
+      <HintPath>..\..\..\Modulos\Mantenimiento Asignación\Mantenimiento Asignación\Capa_Vista\bin\Debug\Capa_Vista.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Auditor">
+      <HintPath>..\..\..\Modulos\MantenimientoAuditor\Capa_Vista_Auditor\bin\Debug\Capa_Vista_Auditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Recursos">
+      <HintPath>..\..\..\Modulos\Mantenimiento Recursos\Capa_Vista_Recursos\bin\Debug\Capa_Vista_Recursos.dll</HintPath>
+    </Reference>
+    <Reference Include="Capa_Vista_Tabla_Ponderacion">
+      <HintPath>..\..\..\Modulos\Mantenimiento_Tabla_ponderacion\Mantenimiento_Tbl_Ponderacion\Capa_Vista_Tabla_Ponderacion\bin\Debug\Capa_Vista_Tabla_Ponderacion.dll</HintPath>
+    </Reference>
     <Reference Include="Interfac_V3, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Modulos\Menus\ModernGUI_V3\bin\Debug\Interfac_V3.exe</HintPath>
+    </Reference>
+    <Reference Include="MantenimientoCronograma">
+      <HintPath>..\..\..\Modulos\MantenimientoCronograma\MantenimientoCronograma\bin\Debug\MantenimientoCronograma.exe</HintPath>
+    </Reference>
+    <Reference Include="MantenimientoProyecto">
+      <HintPath>..\..\..\Modulos\MantenimientoProyecto\MantenimientoProyecto\bin\Debug\MantenimientoProyecto.exe</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />

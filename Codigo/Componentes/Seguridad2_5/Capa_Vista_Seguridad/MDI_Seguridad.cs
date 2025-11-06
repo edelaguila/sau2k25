@@ -499,6 +499,72 @@ namespace Capa_Vista_Seguridad
             Lbl_fecha.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         }
 
+        private void actividadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Capa_Vista.Mantenimiento_Actividades GD = new Capa_Vista.Mantenimiento_Actividades(idUsuario);
+            GD.MdiParent = this;
+            //CentrarFormulario(GD);
+            GD.Show();
+        }
+
+        private void auditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           Capa_Vista_Auditor.Frm_Mant_Auditor GD = new Capa_Vista_Auditor.Frm_Mant_Auditor(idUsuario);
+            GD.MdiParent = this;
+            //CentrarFormulario(GD);
+            GD.Show();
+        }
+
+        private void auditadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void proyectoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MantenimientoProyecto.Frm_Proyecto GD = new MantenimientoProyecto.Frm_Proyecto(idUsuario);
+            GD.MdiParent = this;
+            //CentrarFormulario(GD);
+            GD.Show();
+        }
+
+        private void cronogramaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MantenimientoCronograma.Mantenimiento_Cronograma GD = new MantenimientoCronograma.Mantenimiento_Cronograma(idUsuario);
+            GD.MdiParent = this;
+            //CentrarFormulario(GD);
+            GD.Show();
+        }
+
+        private void asignaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Capa_Vista.Mantenimiento_de_asignación GD = new Capa_Vista.Mantenimiento_de_asignación(idUsuario);
+            GD.MdiParent = this;
+            //CentrarFormulario(GD);
+            GD.Show();
+        }
+
+        private void proyectoAuditadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void recursosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Capa_Vista_Recursos.Frm_Mantenimiento_Recursos GD = new Capa_Vista_Recursos.Frm_Mantenimiento_Recursos(idUsuario);
+            GD.MdiParent = this;
+            //CentrarFormulario(GD);
+            GD.Show();
+        }
+
+        private void tablaDePonderaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Capa_Vista_Tabla_Ponderacion.Frm_Mantenimiento_Tabla_Ponderacion GD = new Capa_Vista_Tabla_Ponderacion.Frm_Mantenimiento_Tabla_Ponderacion(idUsuario);
+            GD.MdiParent = this;
+            //CentrarFormulario(GD);
+            GD.Show();
+        }
+
         //------------------------------------------ Fin KATERYN DE LEON y Gabriela Suc ------------------------------------------
 
 

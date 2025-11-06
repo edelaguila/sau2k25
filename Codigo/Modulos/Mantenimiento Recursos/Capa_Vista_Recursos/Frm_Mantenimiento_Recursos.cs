@@ -13,7 +13,7 @@ namespace Capa_Vista_Recursos
     public partial class Frm_Mantenimiento_Recursos : Form
     {
         string idUsuario;
-        public Frm_Mantenimiento_Recursos()
+        public Frm_Mantenimiento_Recursos(string idUsuario)
         {
             InitializeComponent(); 
 

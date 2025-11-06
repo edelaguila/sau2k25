@@ -14,7 +14,7 @@ namespace Capa_Vista
     {
         string idUsuario;
 
-        public Mantenimiento_de_asignación()
+        public Mantenimiento_de_asignación(string idUsuario)
         {
             InitializeComponent();
             string[] alias = { "Pk_id_asignacion", "Fk_id_auditor", "Fk_id_estado_asignacion", "Fk_id_actividad_proyecto", "nombre_asignacion", "fecha_asignacion", "fecha_finalizacion", "descripcion", "evidencia", "observaciones", "estado" };
