@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Ejecución_Tbl_Proy_Auditado_MC
+namespace Mantenimiento_TblProyAuditado
 {
     public partial class Form1 : Form
     {

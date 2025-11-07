@@ -1,5 +1,5 @@
 ﻿
-namespace Ejecución_Tbl_Proy_Auditado_MC
+namespace Mantenimiento_TblProyAuditado
 {
     partial class Form1
     {

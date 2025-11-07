@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 
-namespace Ejecución_Tbl_Proy_Auditado_MC.Properties
+namespace Mantenimiento_TblProyAuditado.Properties
 {
     /// <summary>
     ///   Clase de recurso fuertemente tipado para buscar cadenas traducidas, etc.
@@ -43,7 +43,7 @@ namespace Ejecución_Tbl_Proy_Auditado_MC.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Ejecución_Tbl_Proy_Auditado_MC.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Mantenimiento_TblProyAuditado.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

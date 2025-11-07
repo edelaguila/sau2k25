@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CapaVista_Tbl_Proy_Auditado_MC
+namespace CapaVista_Tbl_ProyAuditado
 {
-    public partial class Formulario_Mantenimiento_Tbl_Proy_Auditado : Form
+    public partial class Form_Mantenimiento_TblAuditado : Form
     {
         String idUsuario;
-        public Formulario_Mantenimiento_Tbl_Proy_Auditado()
+        public Form_Mantenimiento_TblAuditado()
         {
             InitializeComponent();
             string[] alias =
-            {
+           {
                 "Pk_id_auditor_proyecto",
                 "Fk_id_auditor",
                 "Fk_id_proyecto",
@@ -42,7 +42,6 @@ namespace CapaVista_Tbl_Proy_Auditado_MC
 
         private void navegador1_Load(object sender, EventArgs e)
         {
-
         }
     }
 }
