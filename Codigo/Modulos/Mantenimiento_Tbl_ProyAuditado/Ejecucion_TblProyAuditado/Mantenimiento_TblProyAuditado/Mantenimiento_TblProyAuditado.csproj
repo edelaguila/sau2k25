@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3F08B07A-B135-44FA-88DA-2EABD8D70D34}</ProjectGuid>
+    <ProjectGuid>{42601393-B71B-492C-867A-3F9967AE0FC4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Ejecución_Tbl_Proy_Auditado_MC</RootNamespace>
-    <AssemblyName>Ejecución_Tbl_Proy_Auditado_MC</AssemblyName>
+    <RootNamespace>Mantenimiento_TblProyAuditado</RootNamespace>
+    <AssemblyName>Mantenimiento_TblProyAuditado</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CapaVista_Tbl_Proy_Auditado_MC">
-      <HintPath>..\..\Mantenimiento_Tbl_Proy_Auditado_MC\CapaVista_Tbl_Proy_Auditado_MC\bin\Debug\CapaVista_Tbl_Proy_Auditado_MC.dll</HintPath>
+    <Reference Include="CapaVista_Tbl_ProyAuditado">
+      <HintPath>..\..\Mantenimiento_Tbl_ProyAuditado\CapaVista_Tbl_ProyAuditado\bin\Debug\CapaVista_Tbl_ProyAuditado.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

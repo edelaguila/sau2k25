@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaControlador_Tbl_Proy_Auditado_MC
+namespace CapaControlador_Tbl_ProyAuditado
 {
     class Controlador
     {

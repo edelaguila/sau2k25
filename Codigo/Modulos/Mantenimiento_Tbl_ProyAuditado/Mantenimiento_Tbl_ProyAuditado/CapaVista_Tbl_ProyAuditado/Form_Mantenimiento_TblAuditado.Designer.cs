@@ -1,7 +1,7 @@
 ﻿
-namespace CapaVista_Tbl_Proy_Auditado_MC
+namespace CapaVista_Tbl_ProyAuditado
 {
-    partial class Formulario_Mantenimiento_Tbl_Proy_Auditado
+    partial class Form_Mantenimiento_TblAuditado
     {
         /// <summary>
         /// Required designer variable.
@@ -39,18 +39,17 @@ namespace CapaVista_Tbl_Proy_Auditado_MC
             this.navegador1.Location = new System.Drawing.Point(0, 0);
             this.navegador1.Margin = new System.Windows.Forms.Padding(4);
             this.navegador1.Name = "navegador1";
-            this.navegador1.Size = new System.Drawing.Size(1196, 617);
+            this.navegador1.Size = new System.Drawing.Size(1159, 577);
             this.navegador1.TabIndex = 0;
-            this.navegador1.Load += new System.EventHandler(this.navegador1_Load);
             // 
-            // Formulario_Mantenimiento_Tbl_Proy_Auditado
+            // Form_Mantenimiento_TblAuditado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1196, 617);
+            this.ClientSize = new System.Drawing.Size(1159, 577);
             this.Controls.Add(this.navegador1);
-            this.Name = "Formulario_Mantenimiento_Tbl_Proy_Auditado";
-            this.Text = "Formulario_Mantenimiento_Tbl_Proy_Auditado";
+            this.Name = "Form_Mantenimiento_TblAuditado";
+            this.Text = "10004_Tbl_Proyecto_Auditado";
             this.ResumeLayout(false);
 
         }

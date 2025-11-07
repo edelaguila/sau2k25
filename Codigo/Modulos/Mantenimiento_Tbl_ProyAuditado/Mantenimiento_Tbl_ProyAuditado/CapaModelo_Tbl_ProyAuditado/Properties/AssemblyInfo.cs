@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("Ejecución_Tbl_Proy_Auditado_MC")]
+[assembly: AssemblyTitle("CapaModelo_Tbl_ProyAuditado")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Ejecución_Tbl_Proy_Auditado_MC")]
+[assembly: AssemblyProduct("CapaModelo_Tbl_ProyAuditado")]
 [assembly: AssemblyCopyright("Copyright ©  2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // El siguiente GUID sirve como id. de typelib si este proyecto se expone a COM.
-[assembly: Guid("3f08b07a-b135-44fa-88da-2eabd8d70d34")]
+[assembly: Guid("c97a43e0-9d39-41d2-86cc-9356fc45508d")]
 
 // La información de versión de un ensamblado consta de los cuatro valores siguientes:
 //

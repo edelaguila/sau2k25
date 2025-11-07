@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Ejecución_Tbl_Proy_Auditado_MC
+namespace Mantenimiento_TblProyAuditado
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace Ejecución_Tbl_Proy_Auditado_MC
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CapaVista_Tbl_Proy_Auditado_MC.Formulario_Mantenimiento_Tbl_Proy_Auditado());
+            Application.Run(new CapaVista_Tbl_ProyAuditado.Form_Mantenimiento_TblAuditado());
         }
     }
 }
