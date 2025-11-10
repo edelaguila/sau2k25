@@ -36,10 +36,12 @@ namespace Capa_Vista_Auditor
             string[] alias = {
                 "Pk_id_auditor", "nombre_auditor", "telefono_auditor", "email_auditor", "carnet_auditor",
                 "estado" ,"Fk_id_perfil_auditor","Fk_id_proyecto"};
+            navegador1.AsignarNombreForm("10001 - Mantenimiento Auditor");
             navegador1.AsignarAlias(alias);
             navegador1.AsignarSalida(this);
             navegador1.AsignarColorFondo(Color.CadetBlue);
             navegador1.AsignarColorFuente(Color.Black);
+          
             navegador1.ObtenerIdAplicacion("10001");
             //navegador1.AsignarAyuda("1");
             navegador1.ObtenerIdUsuario(idUsuario);

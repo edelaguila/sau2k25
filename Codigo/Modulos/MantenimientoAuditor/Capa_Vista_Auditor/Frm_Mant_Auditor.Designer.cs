@@ -48,7 +48,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.navegador1);
             this.Name = "Frm_Mant_Auditor";
-            this.Text = "Frm_Mant_Auditor";
+            this.Text = "10001 - Mantenimiento Auditor";
             this.ResumeLayout(false);
 
         }
