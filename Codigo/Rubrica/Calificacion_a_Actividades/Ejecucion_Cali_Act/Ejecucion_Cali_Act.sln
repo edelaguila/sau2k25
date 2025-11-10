@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35026.282
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ejecucion_Cali_Act", "Ejecucion_Cali_Act\Ejecucion_Cali_Act.csproj", "{F53C4CF4-A370-4A5C-AA0D-DB53A58911A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F53C4CF4-A370-4A5C-AA0D-DB53A58911A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F53C4CF4-A370-4A5C-AA0D-DB53A58911A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F53C4CF4-A370-4A5C-AA0D-DB53A58911A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F53C4CF4-A370-4A5C-AA0D-DB53A58911A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {567C840D-D9B8-4412-962A-A7B4F102FE81}
+	EndGlobalSection
+EndGlobal
