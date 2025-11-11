@@ -68,6 +68,7 @@
             this.Lbl_fecha = new System.Windows.Forms.Label();
             this.Lbl_inferiorfecha = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.asignarAuditoresAAuditadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.Pnl_usuario.SuspendLayout();
@@ -215,7 +216,8 @@
             // auditoriaToolStripMenuItem
             // 
             this.auditoriaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.catalogosToolStripMenuItem});
+            this.catalogosToolStripMenuItem,
+            this.asignarAuditoresAAuditadosToolStripMenuItem});
             this.auditoriaToolStripMenuItem.Name = "auditoriaToolStripMenuItem";
             this.auditoriaToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
             this.auditoriaToolStripMenuItem.Text = "Auditoria";
@@ -233,7 +235,7 @@
             this.recursosToolStripMenuItem,
             this.tablaDePonderaciónToolStripMenuItem});
             this.catalogosToolStripMenuItem.Name = "catalogosToolStripMenuItem";
-            this.catalogosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.catalogosToolStripMenuItem.Size = new System.Drawing.Size(294, 26);
             this.catalogosToolStripMenuItem.Text = "Catalogos";
             // 
             // auditorToolStripMenuItem
@@ -404,6 +406,13 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // asignarAuditoresAAuditadosToolStripMenuItem
+            // 
+            this.asignarAuditoresAAuditadosToolStripMenuItem.Name = "asignarAuditoresAAuditadosToolStripMenuItem";
+            this.asignarAuditoresAAuditadosToolStripMenuItem.Size = new System.Drawing.Size(294, 26);
+            this.asignarAuditoresAAuditadosToolStripMenuItem.Text = "Asignar Auditores a Auditados";
+            this.asignarAuditoresAAuditadosToolStripMenuItem.Click += new System.EventHandler(this.asignarAuditoresAAuditadosToolStripMenuItem_Click);
+            // 
             // MDI_Seguridad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -477,6 +486,7 @@
         private System.Windows.Forms.ToolStripMenuItem proyectoAuditadoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recursosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tablaDePonderaciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asignarAuditoresAAuditadosToolStripMenuItem;
     }
 }
 
