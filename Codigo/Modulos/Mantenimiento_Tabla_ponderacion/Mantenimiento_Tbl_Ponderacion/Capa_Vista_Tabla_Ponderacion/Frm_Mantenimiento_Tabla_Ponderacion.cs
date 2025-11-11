@@ -30,7 +30,7 @@ namespace Capa_Vista_Tabla_Ponderacion
             navegador1.ObtenerIdAplicacion("10006"); // codigo de tabla ponderacion
             navegador1.ObtenerIdUsuario(idUsuario);
             navegador1.AsignarAyuda("1");
-            navegador1.AsignarNombreForm("Tabla Ponderación");
+            navegador1.AsignarNombreForm("10006 - Mantenimiento Tabla Ponderacion");
 
             //navegador1.AsignarComboConTabla("tbl_auditado", "Pk_id_auditado", "Fk_id_auditado", 1);
                 

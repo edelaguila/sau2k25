@@ -50,7 +50,7 @@ namespace Capa_Vista_Tabla_Ponderacion
             this.ClientSize = new System.Drawing.Size(915, 513);
             this.Controls.Add(this.navegador1);
             this.Name = "Frm_Mantenimiento_Tabla_Ponderacion";
-            this.Text = "Frm_Mantenimiento_Tabla_Ponderacion";
+            this.Text = "10006 - Mantenimiento Tabla Ponderacion";
             this.ResumeLayout(false);
 
         }
