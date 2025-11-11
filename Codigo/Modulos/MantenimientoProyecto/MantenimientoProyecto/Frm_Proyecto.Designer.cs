@@ -30,6 +30,7 @@ namespace MantenimientoProyecto
         private void InitializeComponent()
         {
             this.navegador1 = new Capa_Vista_Navegador.Navegador();
+            this.navegador2 = new Capa_Vista_Navegador.Navegador();
             this.SuspendLayout();
             // 
             // navegador1
@@ -43,14 +44,26 @@ namespace MantenimientoProyecto
             this.navegador1.TabIndex = 0;
             this.navegador1.Load += new System.EventHandler(this.navegador1_Load_1);
             // 
+            // navegador2
+            // 
+            this.navegador2.BackColor = System.Drawing.Color.White;
+            this.navegador2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.navegador2.Location = new System.Drawing.Point(0, 0);
+            this.navegador2.Margin = new System.Windows.Forms.Padding(4);
+            this.navegador2.Name = "navegador2";
+            this.navegador2.Size = new System.Drawing.Size(800, 450);
+            this.navegador2.TabIndex = 1;
+            this.navegador2.Load += new System.EventHandler(this.navegador2_Load);
+            // 
             // Frm_Proyecto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.navegador2);
             this.Controls.Add(this.navegador1);
             this.Name = "Frm_Proyecto";
-            this.Text = "Form1";
+            this.Text = "10002 - Mantenimiento Proyecto";
             this.ResumeLayout(false);
 
         }
@@ -58,6 +71,7 @@ namespace MantenimientoProyecto
         #endregion
 
         private Capa_Vista_Navegador.Navegador navegador1;
+        private Capa_Vista_Navegador.Navegador navegador2;
     }
 }
 

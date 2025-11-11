@@ -25,6 +25,7 @@ namespace MantenimientoProyecto
             //navegador1.AsignarAyuda("1");
             navegador1.ObtenerIdUsuario(idUsuario);
             navegador1.AsignarTabla("tbl_proyecto");
+            navegador1.AsignarNombreForm("10002 Mantenimiento Proyecto");
 
             navegador1.AsignarComboConTabla("tbl_proyecto_estado", "Pk_id_proyecto_estado", "nombre_estado", 1);
             //navegador1.AsignarComboConTabla("tbl****", "Pk_id_****", "*****", 1);
@@ -42,6 +43,11 @@ namespace MantenimientoProyecto
         }
 
         private void navegador1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void navegador2_Load(object sender, EventArgs e)
         {
 
         }

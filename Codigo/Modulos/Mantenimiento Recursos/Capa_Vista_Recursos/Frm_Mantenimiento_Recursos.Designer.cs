@@ -41,6 +41,7 @@ namespace Capa_Vista_Recursos
             this.navegador1.Name = "navegador1";
             this.navegador1.Size = new System.Drawing.Size(800, 450);
             this.navegador1.TabIndex = 0;
+            this.navegador1.Load += new System.EventHandler(this.navegador1_Load);
             // 
             // Frm_Mantenimiento_Recursos
             // 
@@ -49,7 +50,7 @@ namespace Capa_Vista_Recursos
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.navegador1);
             this.Name = "Frm_Mantenimiento_Recursos";
-            this.Text = "Frm_Mantenimiento_Recursos";
+            this.Text = "10008 Mantenimiento Recursos";
             this.ResumeLayout(false);
 
         }
