@@ -40,11 +40,11 @@
     <Reference Include="Capa_Vista_Auditor">
       <HintPath>..\..\..\Modulos\MantenimientoAuditor\Capa_Vista_Auditor\bin\Debug\Capa_Vista_Auditor.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Cali_Act">
+      <HintPath>..\..\..\Rubrica\Calificacion_a_Actividades\Capa_Vista_Cali_Act\bin\Debug\Capa_Vista_Cali_Act.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Recursos">
       <HintPath>..\..\..\Modulos\Mantenimiento Recursos\Capa_Vista_Recursos\bin\Debug\Capa_Vista_Recursos.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Vista_Tabla_Ponderacion">
-      <HintPath>..\..\..\Modulos\Mantenimiento_Tabla_ponderacion\Mantenimiento_Tbl_Ponderacion\Capa_Vista_Tabla_Ponderacion\bin\Debug\Capa_Vista_Tabla_Ponderacion.dll</HintPath>
     </Reference>
     <Reference Include="Interfac_V3, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

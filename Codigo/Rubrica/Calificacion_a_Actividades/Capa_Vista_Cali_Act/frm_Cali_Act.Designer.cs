@@ -57,7 +57,7 @@ namespace Capa_Vista_Cali_Act
             // 
             this.Lbl_Titulo.AutoSize = true;
             this.Lbl_Titulo.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Titulo.Location = new System.Drawing.Point(241, 34);
+            this.Lbl_Titulo.Location = new System.Drawing.Point(241, 12);
             this.Lbl_Titulo.Name = "Lbl_Titulo";
             this.Lbl_Titulo.Size = new System.Drawing.Size(355, 24);
             this.Lbl_Titulo.TabIndex = 0;
@@ -66,28 +66,30 @@ namespace Capa_Vista_Cali_Act
             // Btn_Nuevo
             // 
             this.Btn_Nuevo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btn_Nuevo.BackgroundImage")));
+            this.Btn_Nuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Nuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Nuevo.Location = new System.Drawing.Point(47, 72);
+            this.Btn_Nuevo.Location = new System.Drawing.Point(53, 50);
             this.Btn_Nuevo.Name = "Btn_Nuevo";
-            this.Btn_Nuevo.Size = new System.Drawing.Size(64, 68);
+            this.Btn_Nuevo.Size = new System.Drawing.Size(45, 45);
             this.Btn_Nuevo.TabIndex = 1;
             this.Btn_Nuevo.UseVisualStyleBackColor = true;
             this.Btn_Nuevo.Click += new System.EventHandler(this.Btn_Nuevo_Click);
             // 
             // Txt_Buscar
             // 
-            this.Txt_Buscar.Location = new System.Drawing.Point(257, 114);
+            this.Txt_Buscar.Location = new System.Drawing.Point(206, 76);
             this.Txt_Buscar.Name = "Txt_Buscar";
-            this.Txt_Buscar.Size = new System.Drawing.Size(201, 20);
+            this.Txt_Buscar.Size = new System.Drawing.Size(252, 20);
             this.Txt_Buscar.TabIndex = 7;
             // 
             // Btn_Guardar
             // 
             this.Btn_Guardar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btn_Guardar.BackgroundImage")));
+            this.Btn_Guardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Guardar.Location = new System.Drawing.Point(117, 72);
+            this.Btn_Guardar.Location = new System.Drawing.Point(104, 51);
             this.Btn_Guardar.Name = "Btn_Guardar";
-            this.Btn_Guardar.Size = new System.Drawing.Size(64, 68);
+            this.Btn_Guardar.Size = new System.Drawing.Size(45, 45);
             this.Btn_Guardar.TabIndex = 8;
             this.Btn_Guardar.UseVisualStyleBackColor = true;
             this.Btn_Guardar.Click += new System.EventHandler(this.Btn_Guardar_Click);
@@ -95,10 +97,11 @@ namespace Capa_Vista_Cali_Act
             // Btn_Editar
             // 
             this.Btn_Editar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btn_Editar.BackgroundImage")));
+            this.Btn_Editar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Editar.Location = new System.Drawing.Point(187, 72);
+            this.Btn_Editar.Location = new System.Drawing.Point(155, 51);
             this.Btn_Editar.Name = "Btn_Editar";
-            this.Btn_Editar.Size = new System.Drawing.Size(64, 68);
+            this.Btn_Editar.Size = new System.Drawing.Size(45, 45);
             this.Btn_Editar.TabIndex = 9;
             this.Btn_Editar.UseVisualStyleBackColor = true;
             this.Btn_Editar.Click += new System.EventHandler(this.Btn_Editar_Click);
@@ -106,10 +109,11 @@ namespace Capa_Vista_Cali_Act
             // Btn_Buscar
             // 
             this.Btn_Buscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btn_Buscar.BackgroundImage")));
+            this.Btn_Buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Buscar.Location = new System.Drawing.Point(464, 72);
+            this.Btn_Buscar.Location = new System.Drawing.Point(464, 51);
             this.Btn_Buscar.Name = "Btn_Buscar";
-            this.Btn_Buscar.Size = new System.Drawing.Size(64, 68);
+            this.Btn_Buscar.Size = new System.Drawing.Size(45, 45);
             this.Btn_Buscar.TabIndex = 10;
             this.Btn_Buscar.UseVisualStyleBackColor = true;
             this.Btn_Buscar.Click += new System.EventHandler(this.Btn_Buscar_Click);
@@ -117,10 +121,11 @@ namespace Capa_Vista_Cali_Act
             // Btn_Eliminar
             // 
             this.Btn_Eliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btn_Eliminar.BackgroundImage")));
+            this.Btn_Eliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Eliminar.Location = new System.Drawing.Point(532, 72);
+            this.Btn_Eliminar.Location = new System.Drawing.Point(515, 51);
             this.Btn_Eliminar.Name = "Btn_Eliminar";
-            this.Btn_Eliminar.Size = new System.Drawing.Size(64, 68);
+            this.Btn_Eliminar.Size = new System.Drawing.Size(45, 45);
             this.Btn_Eliminar.TabIndex = 11;
             this.Btn_Eliminar.UseVisualStyleBackColor = true;
             this.Btn_Eliminar.Click += new System.EventHandler(this.Btn_Eliminar_Click);
@@ -128,10 +133,11 @@ namespace Capa_Vista_Cali_Act
             // Btn_Cancelar
             // 
             this.Btn_Cancelar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Btn_Cancelar.BackgroundImage")));
+            this.Btn_Cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Btn_Cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Cancelar.Location = new System.Drawing.Point(602, 72);
+            this.Btn_Cancelar.Location = new System.Drawing.Point(566, 50);
             this.Btn_Cancelar.Name = "Btn_Cancelar";
-            this.Btn_Cancelar.Size = new System.Drawing.Size(64, 68);
+            this.Btn_Cancelar.Size = new System.Drawing.Size(45, 45);
             this.Btn_Cancelar.TabIndex = 12;
             this.Btn_Cancelar.UseVisualStyleBackColor = true;
             this.Btn_Cancelar.Click += new System.EventHandler(this.Btn_Cancelar_Click);
@@ -140,7 +146,7 @@ namespace Capa_Vista_Cali_Act
             // 
             this.Lbl_Buscar.AutoSize = true;
             this.Lbl_Buscar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Buscar.Location = new System.Drawing.Point(324, 90);
+            this.Lbl_Buscar.Location = new System.Drawing.Point(324, 51);
             this.Lbl_Buscar.Name = "Lbl_Buscar";
             this.Lbl_Buscar.Size = new System.Drawing.Size(61, 21);
             this.Lbl_Buscar.TabIndex = 13;
@@ -150,7 +156,7 @@ namespace Capa_Vista_Cali_Act
             // 
             this.Lbl_Id.AutoSize = true;
             this.Lbl_Id.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Id.Location = new System.Drawing.Point(49, 201);
+            this.Lbl_Id.Location = new System.Drawing.Point(49, 117);
             this.Lbl_Id.Name = "Lbl_Id";
             this.Lbl_Id.Size = new System.Drawing.Size(30, 21);
             this.Lbl_Id.TabIndex = 14;
@@ -160,7 +166,7 @@ namespace Capa_Vista_Cali_Act
             // 
             this.Lbl_NombreAuditado.AutoSize = true;
             this.Lbl_NombreAuditado.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_NombreAuditado.Location = new System.Drawing.Point(49, 241);
+            this.Lbl_NombreAuditado.Location = new System.Drawing.Point(49, 157);
             this.Lbl_NombreAuditado.Name = "Lbl_NombreAuditado";
             this.Lbl_NombreAuditado.Size = new System.Drawing.Size(185, 21);
             this.Lbl_NombreAuditado.TabIndex = 15;
@@ -170,7 +176,7 @@ namespace Capa_Vista_Cali_Act
             // 
             this.Lbl_NombreActividad.AutoSize = true;
             this.Lbl_NombreActividad.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_NombreActividad.Location = new System.Drawing.Point(49, 320);
+            this.Lbl_NombreActividad.Location = new System.Drawing.Point(49, 236);
             this.Lbl_NombreActividad.Name = "Lbl_NombreActividad";
             this.Lbl_NombreActividad.Size = new System.Drawing.Size(203, 21);
             this.Lbl_NombreActividad.TabIndex = 16;
@@ -180,7 +186,7 @@ namespace Capa_Vista_Cali_Act
             // 
             this.Lbl_NombreAuditar.AutoSize = true;
             this.Lbl_NombreAuditar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_NombreAuditar.Location = new System.Drawing.Point(49, 280);
+            this.Lbl_NombreAuditar.Location = new System.Drawing.Point(49, 196);
             this.Lbl_NombreAuditar.Name = "Lbl_NombreAuditar";
             this.Lbl_NombreAuditar.Size = new System.Drawing.Size(168, 21);
             this.Lbl_NombreAuditar.TabIndex = 17;
@@ -190,7 +196,7 @@ namespace Capa_Vista_Cali_Act
             // 
             this.Lbl_Nota.AutoSize = true;
             this.Lbl_Nota.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Nota.Location = new System.Drawing.Point(49, 363);
+            this.Lbl_Nota.Location = new System.Drawing.Point(49, 278);
             this.Lbl_Nota.Name = "Lbl_Nota";
             this.Lbl_Nota.Size = new System.Drawing.Size(54, 21);
             this.Lbl_Nota.TabIndex = 18;
@@ -198,7 +204,7 @@ namespace Capa_Vista_Cali_Act
             // 
             // Txt_Id
             // 
-            this.Txt_Id.Location = new System.Drawing.Point(251, 204);
+            this.Txt_Id.Location = new System.Drawing.Point(251, 120);
             this.Txt_Id.Name = "Txt_Id";
             this.Txt_Id.Size = new System.Drawing.Size(134, 20);
             this.Txt_Id.TabIndex = 19;
@@ -206,7 +212,7 @@ namespace Capa_Vista_Cali_Act
             // Cmb_Auditado
             // 
             this.Cmb_Auditado.FormattingEnabled = true;
-            this.Cmb_Auditado.Location = new System.Drawing.Point(251, 244);
+            this.Cmb_Auditado.Location = new System.Drawing.Point(251, 160);
             this.Cmb_Auditado.Name = "Cmb_Auditado";
             this.Cmb_Auditado.Size = new System.Drawing.Size(134, 21);
             this.Cmb_Auditado.TabIndex = 20;
@@ -214,7 +220,7 @@ namespace Capa_Vista_Cali_Act
             // Cmb_Auditor
             // 
             this.Cmb_Auditor.FormattingEnabled = true;
-            this.Cmb_Auditor.Location = new System.Drawing.Point(251, 283);
+            this.Cmb_Auditor.Location = new System.Drawing.Point(251, 199);
             this.Cmb_Auditor.Name = "Cmb_Auditor";
             this.Cmb_Auditor.Size = new System.Drawing.Size(134, 21);
             this.Cmb_Auditor.TabIndex = 21;
@@ -222,14 +228,14 @@ namespace Capa_Vista_Cali_Act
             // Cmb_Actividad
             // 
             this.Cmb_Actividad.FormattingEnabled = true;
-            this.Cmb_Actividad.Location = new System.Drawing.Point(251, 323);
+            this.Cmb_Actividad.Location = new System.Drawing.Point(251, 239);
             this.Cmb_Actividad.Name = "Cmb_Actividad";
             this.Cmb_Actividad.Size = new System.Drawing.Size(134, 21);
             this.Cmb_Actividad.TabIndex = 22;
             // 
             // Txt_Nota
             // 
-            this.Txt_Nota.Location = new System.Drawing.Point(251, 366);
+            this.Txt_Nota.Location = new System.Drawing.Point(251, 281);
             this.Txt_Nota.Name = "Txt_Nota";
             this.Txt_Nota.Size = new System.Drawing.Size(134, 20);
             this.Txt_Nota.TabIndex = 23;
@@ -237,7 +243,7 @@ namespace Capa_Vista_Cali_Act
             // Dgv_CaliAct
             // 
             this.Dgv_CaliAct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_CaliAct.Location = new System.Drawing.Point(417, 201);
+            this.Dgv_CaliAct.Location = new System.Drawing.Point(417, 117);
             this.Dgv_CaliAct.Name = "Dgv_CaliAct";
             this.Dgv_CaliAct.Size = new System.Drawing.Size(371, 228);
             this.Dgv_CaliAct.TabIndex = 24;
@@ -246,7 +252,8 @@ namespace Capa_Vista_Cali_Act
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(834, 361);
             this.Controls.Add(this.Dgv_CaliAct);
             this.Controls.Add(this.Txt_Nota);
             this.Controls.Add(this.Cmb_Actividad);
