@@ -37,6 +37,9 @@
     <Reference Include="Capa_Modelo_Cali_Act">
       <HintPath>..\Capa_Modelo_Cali_Act\bin\Debug\Capa_Modelo_Cali_Act.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_Navegador">
+      <HintPath>..\..\..\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />

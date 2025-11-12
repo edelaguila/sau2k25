@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.IO; // Necesario para Directory, File, Path y SearchOption
 using Capa_Controlador_Seguridad;
 using Interfac_V3;
+using Capa_Vista_Cali_Act;
 namespace Capa_Vista_Seguridad
 {
     public partial class MDI_Seguridad : Form
@@ -559,11 +560,20 @@ namespace Capa_Vista_Seguridad
 
         private void tablaDePonderaciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Capa_Vista_Tabla_Ponderacion.Frm_Mantenimiento_Tabla_Ponderacion GD = new Capa_Vista_Tabla_Ponderacion.Frm_Mantenimiento_Tabla_Ponderacion(idUsuario);
-            GD.MdiParent = this;
-            //CentrarFormulario(GD);
-            GD.Show();
+            //Capa_Vista_Tabla_Ponderacion.Frm_Mantenimiento_Tabla_Ponderacion GD = new Capa_Vista_Tabla_Ponderacion.Frm_Mantenimiento_Tabla_Ponderacion(idUsuario);
+            //GD.MdiParent = this;
+            ////CentrarFormulario(GD);
+            //GD.Show();
         }
+
+        private void calificaciónActividadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_Cali_Act form = new frm_Cali_Act();
+            form.MdiParent = this;
+            form.Show();
+
+        }
+
 
         //------------------------------------------ Fin KATERYN DE LEON y Gabriela Suc ------------------------------------------
 

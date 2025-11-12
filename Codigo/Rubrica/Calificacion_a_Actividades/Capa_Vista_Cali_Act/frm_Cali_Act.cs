@@ -20,6 +20,7 @@ namespace Capa_Vista_Cali_Act
         private readonly ToolTip toolTip1 = new ToolTip(); // NUEVO
         public frm_Cali_Act()
         {
+
             InitializeComponent();
             fun_limpiar();
             Txt_Id.Enabled = false;
