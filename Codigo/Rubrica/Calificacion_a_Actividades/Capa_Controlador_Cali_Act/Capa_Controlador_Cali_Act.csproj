@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8A39CEB3-FC2A-4778-8D10-2ED9EAE79D86}</ProjectGuid>
+    <ProjectGuid>{D470FB8F-F4D2-43EB-99EA-8AF1DBD21F2A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Capa_Vista_Tabla_Ponderacion</RootNamespace>
-    <AssemblyName>Capa_Vista_Tabla_Ponderacion</AssemblyName>
+    <RootNamespace>Capa_Controlador_Cali_Act</RootNamespace>
+    <AssemblyName>Capa_Controlador_Cali_Act</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,19 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Capa_Controlador_Seguridad">
-      <HintPath>..\..\..\sau2k25\Codigo\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Controlador_Seguridad.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Controlador_Tabla_Ponderacion">
-      <HintPath>..\Capa_Controlador_Tabla_Ponderacion\bin\Debug\Capa_Controlador_Tabla_Ponderacion.dll</HintPath>
-    </Reference>
-    <Reference Include="Capa_Vista_Navegador">
-      <HintPath>..\..\..\sau2k25\Codigo\Componentes\Navegador2_5\Capa_Vista_Navegador\bin\Debug\Capa_Vista_Navegador.dll</HintPath>
+    <Reference Include="Capa_Modelo_Cali_Act">
+      <HintPath>..\Capa_Modelo_Cali_Act\bin\Debug\Capa_Modelo_Cali_Act.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,18 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Frm_Mantenimiento_Tabla_Ponderacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_Mantenimiento_Tabla_Ponderacion.Designer.cs">
-      <DependentUpon>Frm_Mantenimiento_Tabla_Ponderacion.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Controlador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Frm_Mantenimiento_Tabla_Ponderacion.resx">
-      <DependentUpon>Frm_Mantenimiento_Tabla_Ponderacion.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
