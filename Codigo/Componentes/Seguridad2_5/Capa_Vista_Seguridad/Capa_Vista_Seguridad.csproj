@@ -37,6 +37,9 @@
     <Reference Include="Capa_Vista">
       <HintPath>..\..\..\Modulos\Mantenimiento Asignación\Mantenimiento Asignación\Capa_Vista\bin\Debug\Capa_Vista.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_AsignacionAud">
+      <HintPath>..\..\..\Rubrica\Asignacion Auditor Auditado\Asignacion Auditor Auditado\Capa_Vista_AsignacionAud\bin\Debug\Capa_Vista_AsignacionAud.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Auditor">
       <HintPath>..\..\..\Modulos\MantenimientoAuditor\Capa_Vista_Auditor\bin\Debug\Capa_Vista_Auditor.dll</HintPath>
     </Reference>
