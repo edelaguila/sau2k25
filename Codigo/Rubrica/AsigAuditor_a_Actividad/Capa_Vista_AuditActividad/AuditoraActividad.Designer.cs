@@ -54,7 +54,7 @@ namespace Capa_Vista_AuditActividad
             // dgv_asignacion
             // 
             this.dgv_asignacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_asignacion.Location = new System.Drawing.Point(27, 316);
+            this.dgv_asignacion.Location = new System.Drawing.Point(27, 331);
             this.dgv_asignacion.Name = "dgv_asignacion";
             this.dgv_asignacion.Size = new System.Drawing.Size(707, 250);
             this.dgv_asignacion.TabIndex = 64;
@@ -214,9 +214,9 @@ namespace Capa_Vista_AuditActividad
             // btn_eliminar
             // 
             this.btn_eliminar.BackgroundImage = global::Capa_Vista_AuditActividad.Properties.Resources.borrar12;
-            this.btn_eliminar.Location = new System.Drawing.Point(410, 253);
+            this.btn_eliminar.Location = new System.Drawing.Point(407, 264);
             this.btn_eliminar.Name = "btn_eliminar";
-            this.btn_eliminar.Size = new System.Drawing.Size(49, 53);
+            this.btn_eliminar.Size = new System.Drawing.Size(35, 35);
             this.btn_eliminar.TabIndex = 63;
             this.btn_eliminar.UseVisualStyleBackColor = true;
             this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click);
@@ -224,19 +224,19 @@ namespace Capa_Vista_AuditActividad
             // btn_modificar
             // 
             this.btn_modificar.BackgroundImage = global::Capa_Vista_AuditActividad.Properties.Resources.editar11;
-            this.btn_modificar.Location = new System.Drawing.Point(330, 253);
+            this.btn_modificar.Location = new System.Drawing.Point(330, 264);
             this.btn_modificar.Name = "btn_modificar";
-            this.btn_modificar.Size = new System.Drawing.Size(49, 53);
+            this.btn_modificar.Size = new System.Drawing.Size(35, 35);
             this.btn_modificar.TabIndex = 62;
             this.btn_modificar.UseVisualStyleBackColor = true;
             this.btn_modificar.Click += new System.EventHandler(this.btn_modificar_Click);
             // 
             // btn_guardar
             // 
-            this.btn_guardar.BackgroundImage = global::Capa_Vista_AuditActividad.Properties.Resources.guardar12;
-            this.btn_guardar.Location = new System.Drawing.Point(249, 253);
+            this.btn_guardar.BackgroundImage = global::Capa_Vista_AuditActividad.Properties.Resources.guardar13;
+            this.btn_guardar.Location = new System.Drawing.Point(258, 264);
             this.btn_guardar.Name = "btn_guardar";
-            this.btn_guardar.Size = new System.Drawing.Size(49, 53);
+            this.btn_guardar.Size = new System.Drawing.Size(35, 35);
             this.btn_guardar.TabIndex = 61;
             this.btn_guardar.UseVisualStyleBackColor = true;
             this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);

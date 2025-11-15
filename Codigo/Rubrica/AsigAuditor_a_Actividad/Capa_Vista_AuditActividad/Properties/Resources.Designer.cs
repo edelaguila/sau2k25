@@ -83,9 +83,29 @@ namespace Capa_Vista_AuditActividad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap guardar11 {
+            get {
+                object obj = ResourceManager.GetObject("guardar11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap guardar12 {
             get {
                 object obj = ResourceManager.GetObject("guardar12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap guardar13 {
+            get {
+                object obj = ResourceManager.GetObject("guardar13", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
