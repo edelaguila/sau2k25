@@ -40,6 +40,10 @@
     <Reference Include="Capa_Vista_AsignacionAud">
       <HintPath>..\..\..\Rubrica\Asignacion Auditor Auditado\Asignacion Auditor Auditado\Capa_Vista_AsignacionAud\bin\Debug\Capa_Vista_AsignacionAud.dll</HintPath>
     </Reference>
+    <Reference Include="Capa_Vista_AuditActividad, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Rubrica\AsigAuditor_a_Actividad\Capa_Vista_AuditActividad\bin\Debug\Capa_Vista_AuditActividad.dll</HintPath>
+    </Reference>
     <Reference Include="Capa_Vista_Auditor">
       <HintPath>..\..\..\Modulos\MantenimientoAuditor\Capa_Vista_Auditor\bin\Debug\Capa_Vista_Auditor.dll</HintPath>
     </Reference>

@@ -583,6 +583,13 @@ namespace Capa_Vista_Seguridad
             asignacionForm.Show();
         }
 
+        private void asignarAuditoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {   
+            Capa_Vista_AuditActividad.AuditoraActividad form = new Capa_Vista_AuditActividad.AuditoraActividad();
+            form.MdiParent = this;
+            form.Show();
+        }
+
 
         //------------------------------------------ Fin KATERYN DE LEON y Gabriela Suc ------------------------------------------
 
