@@ -293,6 +293,18 @@ CREATE TABLE tbl_reporte (
   CONSTRAINT tbl_reporte_ibfk_3 FOREIGN KEY (Fk_id_auditor) REFERENCES tbl_auditor (Pk_id_auditor)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+DROP TABLE IF EXISTS tbl_actividad_rubrica;
+CREATE TABLE tbl_actividad_rubrica (
+  pk_id_actividad_rubrica INT AUTO_INCREMENT PRIMARY KEY,
+  fk_id_actividad_proyecto INT NOT NULL,
+  fk_id_rubrica INT NOT NULL,
+  estado TINYINT(1) DEFAULT 1,
+  FOREIGN KEY (fk_id_actividad_proyecto) REFERENCES tbl_actividades_proyecto(Pk_id_actividad_proyecto),
+  FOREIGN KEY (fk_id_rubrica) REFERENCES tbl_rubrica(Pk_id_rubrica)
+);
+
+
+
 DROP TABLE IF EXISTS tbl_tabla_ponderacion;
 CREATE TABLE tbl_tabla_ponderacion (
   Pk_id_ponderacion int NOT NULL AUTO_INCREMENT,
