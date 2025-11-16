@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO; // Necesario para Directory, File, Path y SearchOption
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO; // Necesario para Directory, File, Path y SearchOption
 using Capa_Controlador_Seguridad;
+using Capa_Vista_Asignación_Alumnos;
 using Interfac_V3;
-using Capa_Vista_Cali_Act;
+//using Capa_Vista_Cali_Act;
 namespace Capa_Vista_Seguridad
 {
     public partial class MDI_Seguridad : Form
@@ -568,19 +569,23 @@ namespace Capa_Vista_Seguridad
 
         private void calificaciónActividadesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frm_Cali_Act form = new frm_Cali_Act();
+           /* frm_Cali_Act form = new frm_Cali_Act();
             form.MdiParent = this;
-            form.Show();
+            form.Show();*/
 
         }
 
-        private void asignarAuditoresAAuditadoaACalificarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void auditoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Marco Monroy
-            Capa_Vista_AsignacionAud.Form1 asignacionForm = new Capa_Vista_AsignacionAud.Form1();
-            asignacionForm.MdiParent = this;
-            // CentrarFormulario(asignacionForm);
-            asignacionForm.Show();
+
+        }
+
+        private void asignarEstudianteAProyectoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Asiganación_Alumnoscs GD = new Asiganación_Alumnoscs();
+            GD.MdiParent = this;
+            //CentrarFormulario(GD);
+            GD.Show();
         }
 
 

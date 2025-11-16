@@ -77,6 +77,7 @@
             this.Lbl_fecha = new System.Windows.Forms.Label();
             this.Lbl_inferiorfecha = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.asignarEstudianteAProyectoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.Pnl_usuario.SuspendLayout();
@@ -229,6 +230,7 @@
             this.auditoriaToolStripMenuItem.Name = "auditoriaToolStripMenuItem";
             this.auditoriaToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
             this.auditoriaToolStripMenuItem.Text = "Auditoria";
+            this.auditoriaToolStripMenuItem.Click += new System.EventHandler(this.auditoriaToolStripMenuItem_Click);
             // 
             // catalogosToolStripMenuItem
             // 
@@ -321,7 +323,8 @@
             this.asignarActividadesARúbricaToolStripMenuItem,
             this.asignarToolStripMenuItem,
             this.calificaciónActividadesToolStripMenuItem,
-            this.asignarCalificaciónAAuditadosToolStripMenuItem});
+            this.asignarCalificaciónAAuditadosToolStripMenuItem,
+            this.asignarEstudianteAProyectoToolStripMenuItem});
             this.procesosToolStripMenuItem.Name = "procesosToolStripMenuItem";
             this.procesosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.procesosToolStripMenuItem.Text = "Procesos";
@@ -349,7 +352,6 @@
             this.asignarAuditoresAAuditadoaACalificarToolStripMenuItem.Name = "asignarAuditoresAAuditadoaACalificarToolStripMenuItem";
             this.asignarAuditoresAAuditadoaACalificarToolStripMenuItem.Size = new System.Drawing.Size(405, 26);
             this.asignarAuditoresAAuditadoaACalificarToolStripMenuItem.Text = "Asignar Auditores a Auditadoa a Calificar";
-            this.asignarAuditoresAAuditadoaACalificarToolStripMenuItem.Click += new System.EventHandler(this.asignarAuditoresAAuditadoaACalificarToolStripMenuItem_Click);
             // 
             // asignarActividadesARúbricaToolStripMenuItem
             // 
@@ -479,6 +481,13 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // asignarEstudianteAProyectoToolStripMenuItem
+            // 
+            this.asignarEstudianteAProyectoToolStripMenuItem.Name = "asignarEstudianteAProyectoToolStripMenuItem";
+            this.asignarEstudianteAProyectoToolStripMenuItem.Size = new System.Drawing.Size(405, 26);
+            this.asignarEstudianteAProyectoToolStripMenuItem.Text = "Asignar Estudiante a proyecto";
+            this.asignarEstudianteAProyectoToolStripMenuItem.Click += new System.EventHandler(this.asignarEstudianteAProyectoToolStripMenuItem_Click);
+            // 
             // MDI_Seguridad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -561,6 +570,7 @@
         private System.Windows.Forms.ToolStripMenuItem asignarActividadesARúbricaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asignarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asignarCalificaciónAAuditadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asignarEstudianteAProyectoToolStripMenuItem;
     }
 }
 
